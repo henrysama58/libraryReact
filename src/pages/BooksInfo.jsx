@@ -6,10 +6,9 @@ import Book from '../components/ui/book';
 import Price from '../components/ui/Price';
 import Rating from '../components/ui/Rating';
 
-const Booksinfo = ({ books }) => {
+const Booksinfo = ({ books, addToCart }) => {
     const { id } = useParams();
     const book = books.find(book => +book.id === +id)
-    console.log(book);
 
     return (
         <div id="books__body">
@@ -26,7 +25,7 @@ const Booksinfo = ({ books }) => {
                         </div>
                         <div className="book__selected">
                             <figure className="book__selected--figure">
-                                <img src={book.url} alt="" />
+                                <img className="book__selected--img" src={book.url} alt="" />
                             </figure>
                             <div className="book__selected--description">
                                 <h2 className="book__selected--title">{book.title}</h2>
@@ -45,7 +44,7 @@ const Booksinfo = ({ books }) => {
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis sit ipsam rerum, debitis optio ex eos numquam, aliquam deserunt nostrum quisquam quo aperiam similique consequuntur placeat necessitatibus totam consectetur dolor.
                                     </p>
                                 </div>
-                                <button className="btn">
+                                <button onClick={() => addToCart(book)} className="btn">
                                     Add to Cart
                                 </button>
                             </div>
@@ -63,7 +62,7 @@ const Booksinfo = ({ books }) => {
                         <div className="books">
                         {
                             books.filter(book => book.rating === 5 && +book.id !== +id)
-                            .slice(0, 5)
+                            .slice(0, 4)
                             .map(book => <Book book={book} key={book.id} />)
                         }
                         </div>
