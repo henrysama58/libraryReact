@@ -21,11 +21,14 @@ const Book = ({ book }) => {
             mountedRef.current = false
         }
     })
-
+    {
+        //test
+    }
     return (
         <div className="book">
             {
                 img ? (
+                    
                 <>
                     <Link to={`/books/${book.id}`}>
                         <figure className="book__img--wrapper">
